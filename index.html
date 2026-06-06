@@ -638,7 +638,7 @@
     </section>
 
     <script>
-        // Books Data
+        // Books Data - Updated with correct PDF paths
         const books = [
             {
                 id: 1,
@@ -647,7 +647,7 @@
                 author: "Self-Help Expert",
                 price: 30,
                 category: "self-help",
-                pdfFile: "Read people like a book Idiosyncrasy edition.pdf"
+                pdfFile: "pdfs/Read people like a book Idiosyncrasy edition.pdf"
             },
             {
                 id: 2,
@@ -656,7 +656,7 @@
                 author: "Spiritual Guide",
                 price: 30,
                 category: "spiritual",
-                pdfFile: "Shankar Baba Mantra Collection - 13.pdf"
+                pdfFile: "pdfs/Shankar Baba Mantra Collection - 13.pdf"
             },
             {
                 id: 3,
@@ -665,7 +665,7 @@
                 author: "Inkfluence AI",
                 price: 30,
                 category: "spiritual",
-                pdfFile: "श्री स्वामी समर्थ मंत्र संग्रह - Inkfluence AI.pdf"
+                pdfFile: "pdfs/श्री स्वामी समर्थ मंत्र संग्रह - Inkfluence AI.pdf"
             },
             {
                 id: 4,
@@ -674,7 +674,7 @@
                 author: "Tech Experts",
                 price: 30,
                 category: "career",
-                pdfFile: "Modern Tech Career Guide 2026 - .pdf"
+                pdfFile: "pdfs/Modern Tech Career Guide 2026 - .pdf"
             },
             {
                 id: 5,
@@ -683,7 +683,7 @@
                 author: "Migration Expert",
                 price: 30,
                 category: "career",
-                pdfFile: "Australia Migration Complete Guide 2026 .pdf"
+                pdfFile: "pdfs/Australia Migration Complete Guide 2026 .pdf"
             }
         ];
 
@@ -810,7 +810,7 @@
             cartModal.classList.toggle('open');
         }
 
-        // Checkout
+        // Checkout with direct PDF downloads
         function checkout() {
             if (cart.length === 0) {
                 alert('Your cart is empty!');
@@ -831,8 +831,18 @@
                 discount = baseTotal - finalTotal;
             }
 
-            const pdfFiles = cart.map(item => item.pdfFile).join('\n');
-            alert(`📚 Order Summary:\n\nBooks: ${totalBooks}\nOriginal Price: ₹${baseTotal}\nDiscount: -₹${discount}\nFinal Total: ₹${finalTotal}\n\n📥 Download Links:\n${pdfFiles}\n\nThank you for your purchase!`);
+            // Generate download links for each PDF
+            cart.forEach(item => {
+                const link = document.createElement('a');
+                link.href = item.pdfFile;
+                link.download = item.pdfFile.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+
+            const summary = `📚 Order Summary:\n\nBooks: ${totalBooks}\nOriginal Price: ₹${baseTotal}\nDiscount: -₹${discount}\nFinal Total: ₹${finalTotal}\n\n✅ Your PDFs are downloading...`;
+            alert(summary);
             
             cart = [];
             updateCart();
