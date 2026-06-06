@@ -135,6 +135,11 @@
             position: relative;
             cursor: pointer;
             font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
         }
 
         .cart-count {
@@ -291,9 +296,9 @@
 
         .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -303,9 +308,9 @@
             border-radius: 16px;
             padding: 20px;
             transition: all 0.4s ease;
-            cursor: pointer;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .book-card:hover {
@@ -315,91 +320,128 @@
         }
 
         .book-cover {
-            height: 220px;
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            border-radius: 10px;
-            margin-bottom: 20px;
+            height: 260px;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E72);
+            border-radius: 12px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        .book-cover:hover {
-            background: linear-gradient(135deg, #D4AF37, #E8C547);
+        .book-cover.cover-2 {
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+        }
+
+        .book-cover.cover-3 {
+            background: linear-gradient(135deg, #F39C12, #E74C3C);
+        }
+
+        .book-cover.cover-4 {
+            background: linear-gradient(135deg, #3498DB, #2980B9);
+        }
+
+        .book-cover.cover-5 {
+            background: linear-gradient(135deg, #9B59B6, #8E44AD);
         }
 
         .book-cover .book-title-cover {
             font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             line-height: 1.4;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
         }
 
         .book-title {
             font-family: 'Playfair Display', serif;
-            font-size: 16px;
+            font-size: 18px;
             margin-bottom: 5px;
             flex-grow: 1;
+            color: var(--white);
         }
 
         .book-author {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--gold);
             margin-bottom: 8px;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         .book-category {
             font-size: 11px;
             color: var(--white-dim);
             margin-bottom: 15px;
-            opacity: 0.7;
-            background: rgba(212, 175, 55, 0.1);
-            padding: 4px 8px;
+            opacity: 0.8;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 6px 10px;
             border-radius: 4px;
             display: inline-block;
         }
 
-        .book-price {
+        .book-actions {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
             gap: 10px;
+            margin-top: auto;
         }
 
         .price {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: 700;
             color: var(--gold);
+            padding: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            min-width: 70px;
+            text-align: center;
         }
 
-        .add-cart {
-            padding: 10px 16px;
+        .btn-download {
+            flex: 1;
+            padding: 12px;
             background: var(--gold);
             border: none;
             color: #000;
-            font-size: 11px;
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.3s;
             letter-spacing: 1px;
             font-weight: 600;
             border-radius: 4px;
-            flex: 1;
+            text-transform: uppercase;
         }
 
-        .add-cart:hover {
+        .btn-download:hover {
             background: var(--gold-light);
             transform: scale(1.05);
+        }
+
+        .btn-add-cart {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--gold);
+            color: #000;
         }
 
         /* Cart Modal */
@@ -483,7 +525,7 @@
         .cart-summary {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 14px;
         }
 
@@ -491,12 +533,12 @@
             display: flex;
             justify-content: space-between;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--gold);
             margin-bottom: 15px;
-            padding: 10px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 4px;
+            padding: 12px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 6px;
         }
 
         .checkout-btn {
@@ -511,7 +553,7 @@
             cursor: pointer;
             font-weight: 700;
             transition: all 0.3s;
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .checkout-btn:hover {
@@ -559,6 +601,7 @@
             .floating-elements { display: none; }
             .featured { padding: 40px 20px; }
             .cart-modal { width: 100%; right: -100%; }
+            .books-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
         }
     </style>
 </head>
@@ -659,7 +702,7 @@
     </section>
 
     <script>
-        // Books Data with GitHub Raw URLs for direct PDF access
+        // Books Data with GitHub Raw URLs
         const books = [
             {
                 id: 1,
@@ -669,7 +712,7 @@
                 price: 30,
                 category: "self-help",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Read%20people%20like%20a%20book%20Idiosyncrasy%20edition.pdf",
-                color: "#FF6B6B"
+                coverClass: ""
             },
             {
                 id: 2,
@@ -679,7 +722,7 @@
                 price: 30,
                 category: "spiritual",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Shankar%20Baba%20Mantra%20Collection%20-%2013.pdf",
-                color: "#4ECDC4"
+                coverClass: "cover-2"
             },
             {
                 id: 3,
@@ -689,7 +732,7 @@
                 price: 30,
                 category: "spiritual",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%AE%E0%A5%80%20%E0%A4%B8%E0%A4%AE%E0%A4%B0%E0%A5%8D%E0%A4%A5%20%E0%A4%AE%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%20%E0%A4%B8%E0%A4%82%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%B9%20-%20Inkfluence%20AI.pdf",
-                color: "#FFD93D"
+                coverClass: "cover-3"
             },
             {
                 id: 4,
@@ -699,7 +742,7 @@
                 price: 30,
                 category: "career",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Modern%20Tech%20Career%20Guide%202026%20-%20.pdf",
-                color: "#6BCB77"
+                coverClass: "cover-4"
             },
             {
                 id: 5,
@@ -709,7 +752,7 @@
                 price: 30,
                 category: "career",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Australia%20Migration%20Complete%20Guide%202026%20.pdf",
-                color: "#A8D8EA"
+                coverClass: "cover-5"
             }
         ];
 
@@ -739,15 +782,16 @@
                 const bookCard = document.createElement('div');
                 bookCard.className = 'book-card';
                 bookCard.innerHTML = `
-                    <div class="book-cover" style="background: linear-gradient(135deg, ${book.color}40, ${book.color}20);" onclick="downloadBook('${book.pdfFile}', '${book.title}')">
-                        <span class="book-title-cover">${book.title}<br><small style="font-size: 12px; opacity: 0.9;">${book.subtitle}</small></span>
+                    <div class="book-cover ${book.coverClass}">
+                        <span class="book-title-cover">${book.title}</span>
                     </div>
                     <h3 class="book-title">${book.title}</h3>
                     <p class="book-author">by ${book.author}</p>
                     <p class="book-category">${book.category.toUpperCase()}</p>
-                    <div class="book-price">
-                        <span class="price">₹${book.price}</span>
-                        <button class="add-cart" onclick="addToCart(${book.id})">Add to Cart</button>
+                    <div class="book-actions">
+                        <div class="price">₹${book.price}</div>
+                        <button class="btn-download" onclick="downloadBook('${book.pdfFile}', '${book.title}')">📥 Download</button>
+                        <button class="btn-add-cart" onclick="addToCart(${book.id})">Add Cart</button>
                     </div>
                 `;
                 grid.appendChild(bookCard);
@@ -761,11 +805,11 @@
             renderBooks(category);
         }
 
-        // Download individual book
+        // Download single book
         function downloadBook(pdfUrl, title) {
             const link = document.createElement('a');
             link.href = pdfUrl;
-            link.download = title + '.pdf';
+            link.download = title.replace(/\s+/g, '_') + '.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -828,7 +872,6 @@
             let finalTotal = baseTotal;
             let discount = 0;
 
-            // Apply offer: 2 books for ₹49
             const pairs = Math.floor(totalBooks / 2);
             const remaining = totalBooks % 2;
 
@@ -847,7 +890,7 @@
             cartModal.classList.toggle('open');
         }
 
-        // Checkout with direct PDF downloads
+        // Checkout
         function checkout() {
             if (cart.length === 0) {
                 alert('Your cart is empty!');
@@ -868,14 +911,14 @@
                 discount = baseTotal - finalTotal;
             }
 
-            // Download each PDF with delay
+            // Download each PDF
             cart.forEach((item, index) => {
                 setTimeout(() => {
                     downloadBook(item.pdfFile, item.title);
                 }, index * 800);
             });
 
-            const summary = `📚 ORDER CONFIRMED!\n\n📖 Books: ${totalBooks}\n💵 Original Price: ₹${baseTotal}\n🎉 Discount: -₹${discount}\n💰 Final Total: ₹${finalTotal}\n\n✅ Your PDFs are downloading...\n\nThank you for your purchase! 🙏`;
+            const summary = `📚 ORDER CONFIRMED!\n\n📖 Books: ${totalBooks}\n💵 Original: ₹${baseTotal}\n🎉 Discount: -₹${discount}\n💰 Total: ₹${finalTotal}\n\n✅ Your PDFs are downloading!\n\nThank you! 🙏`;
             
             setTimeout(() => alert(summary), 500);
             
@@ -898,7 +941,6 @@
                 border-radius: 8px;
                 font-weight: 600;
                 z-index: 2000;
-                animation: slideIn 0.3s ease;
                 box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
             `;
             document.body.appendChild(notification);
