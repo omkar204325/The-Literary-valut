@@ -316,11 +316,52 @@
             font-size: 11px;
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .add-cart:hover {
             background: var(--gold);
             color: #000;
+        }
+
+        /* Checkbox for combo offer */
+        .combo-checkbox {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .combo-checkbox input[type="checkbox"] {
+            accent-color: var(--gold);
+            cursor: pointer;
+            margin-right: 8px;
+        }
+
+        .combo-checkbox label {
+            font-size: 12px;
+            color: var(--white-dim);
+            cursor: pointer;
+        }
+
+        .combo-offer {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .combo-offer h3 {
+            color: var(--gold);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .combo-offer p {
+            color: var(--white-dim);
+            font-size: 12px;
         }
 
         /* Particles */
@@ -375,7 +416,7 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#featured">Featured</a></li>
-            <li><a href="#library">Library</a></li>
+            <li><a href="#library">PDF Library</a></li>
             <li><a href="#about">About</a></li>
         </ul>
     </nav>
@@ -405,7 +446,7 @@
         </div>
     </section>
 
-    <!-- Featured -->
+    <!-- Featured Books -->
     <section class="featured" id="featured">
         <div class="section-header">
             <p class="section-tagline">Curated Selection</p>
@@ -463,6 +504,101 @@
         </div>
     </section>
 
+    <!-- PDF Library Section -->
+    <section class="featured" id="library">
+        <div class="section-header">
+            <p class="section-tagline">Digital Collection</p>
+            <h2 class="section-heading">PDF Library</h2>
+        </div>
+
+        <div class="combo-offer">
+            <h3>🎉 COMBO OFFER</h3>
+            <p>Buy 2 PDFs @ ₹49 Only | Regular Price: ₹30 each</p>
+        </div>
+
+        <div class="books-grid" style="margin-top: 40px;">
+            <div class="book-card">
+                <div class="book-cover" style="background: linear-gradient(135deg, #2a1a1a, #3a2a2a);">
+                    <span class="book-title-cover">📚 Read Like<br>A Book</span>
+                </div>
+                <h3 class="book-title">Read People Like a Book</h3>
+                <p class="book-author">Idiosyncrasy Edition</p>
+                <div class="book-price">
+                    <span class="price">₹30</span>
+                    <a href="./pdfs/Read people like a book Idiosyncrasy edition.pdf" download class="add-cart">Download</a>
+                </div>
+                <div class="combo-checkbox">
+                    <input type="checkbox" id="pdf1" class="pdf-checkbox" data-price="30">
+                    <label for="pdf1">Select for combo</label>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover" style="background: linear-gradient(135deg, #2a1a1a, #3a2a2a);">
+                    <span class="book-title-cover">🕉️ Shankar Baba<br>Mantras</span>
+                </div>
+                <h3 class="book-title">Shankar Baba Mantra</h3>
+                <p class="book-author">Collection - 13</p>
+                <div class="book-price">
+                    <span class="price">₹30</span>
+                    <a href="./pdfs/Shankar Baba Mantra Collection - 13.pdf" download class="add-cart">Download</a>
+                </div>
+                <div class="combo-checkbox">
+                    <input type="checkbox" id="pdf2" class="pdf-checkbox" data-price="30">
+                    <label for="pdf2">Select for combo</label>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover" style="background: linear-gradient(135deg, #2a1a1a, #3a2a2a);">
+                    <span class="book-title-cover">🔱 स्वामी<br>समर्थ मंत्र</span>
+                </div>
+                <h3 class="book-title">श्री स्वामी समर्थ मंत्र</h3>
+                <p class="book-author">Inkfluence AI</p>
+                <div class="book-price">
+                    <span class="price">₹30</span>
+                    <a href="./pdfs/श्री स्वामी समर्थ मंत्र संग्रह - Inkfluence AI.pdf" download class="add-cart">Download</a>
+                </div>
+                <div class="combo-checkbox">
+                    <input type="checkbox" id="pdf3" class="pdf-checkbox" data-price="30">
+                    <label for="pdf3">Select for combo</label>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover" style="background: linear-gradient(135deg, #2a1a1a, #3a2a2a);">
+                    <span class="book-title-cover">💻 Modern Tech<br>Career</span>
+                </div>
+                <h3 class="book-title">Modern Tech Career</h3>
+                <p class="book-author">Guide 2026</p>
+                <div class="book-price">
+                    <span class="price">₹30</span>
+                    <a href="./pdfs/Modern Tech Career Guide 2026.pdf" download class="add-cart">Download</a>
+                </div>
+                <div class="combo-checkbox">
+                    <input type="checkbox" id="pdf4" class="pdf-checkbox" data-price="30">
+                    <label for="pdf4">Select for combo</label>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover" style="background: linear-gradient(135deg, #2a1a1a, #3a2a2a);">
+                    <span class="book-title-cover">🇦🇺 Australia<br>Migration</span>
+                </div>
+                <h3 class="book-title">Australia Migration</h3>
+                <p class="book-author">Complete Guide 2026</p>
+                <div class="book-price">
+                    <span class="price">₹30</span>
+                    <a href="./pdfs/Australia Migration Complete Guide 2026.pdf" download class="add-cart">Download</a>
+                </div>
+                <div class="combo-checkbox">
+                    <input type="checkbox" id="pdf5" class="pdf-checkbox" data-price="30">
+                    <label for="pdf5">Select for combo</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Create particles
         function createParticles() {
@@ -491,15 +627,35 @@
         // Add to cart animation
         document.querySelectorAll('.add-cart').forEach(btn => {
             btn.addEventListener('click', function() {
-                const originalText = this.textContent;
-                this.textContent = 'Added!';
-                this.style.background = 'var(--gold)';
-                this.style.color = '#000';
-                setTimeout(() => {
-                    this.textContent = originalText;
-                    this.style.background = 'transparent';
-                    this.style.color = 'var(--gold)';
-                }, 1500);
+                if (this.tagName === 'A') {
+                    const originalText = this.textContent;
+                    this.textContent = 'Downloading...';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                    }, 2000);
+                } else {
+                    const originalText = this.textContent;
+                    this.textContent = 'Added!';
+                    this.style.background = 'var(--gold)';
+                    this.style.color = '#000';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'transparent';
+                        this.style.color = 'var(--gold)';
+                    }, 1500);
+                }
+            });
+        });
+
+        // Combo offer logic
+        const checkboxes = document.querySelectorAll('.pdf-checkbox');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const selectedCount = document.querySelectorAll('.pdf-checkbox:checked').length;
+                if (selectedCount >= 2) {
+                    // Show combo alert
+                    alert('🎉 Combo Offer Applied!\n2 PDFs for ₹49\n(Instead of ₹60)');
+                }
             });
         });
 
