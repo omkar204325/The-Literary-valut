@@ -311,6 +311,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            overflow: hidden;
         }
 
         .book-card:hover {
@@ -320,8 +321,7 @@
         }
 
         .book-cover {
-            height: 260px;
-            background: linear-gradient(135deg, #FF6B6B, #FF8E72);
+            height: 320px;
             border-radius: 12px;
             margin-bottom: 15px;
             display: flex;
@@ -330,35 +330,19 @@
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: #1a1a1a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
 
-        .book-cover.cover-2 {
-            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
-        .book-cover.cover-3 {
-            background: linear-gradient(135deg, #F39C12, #E74C3C);
-        }
-
-        .book-cover.cover-4 {
-            background: linear-gradient(135deg, #3498DB, #2980B9);
-        }
-
-        .book-cover.cover-5 {
-            background: linear-gradient(135deg, #9B59B6, #8E44AD);
-        }
-
-        .book-cover .book-title-cover {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #fff;
-            text-align: center;
-            padding: 30px;
-            line-height: 1.4;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        .book-card:hover .book-cover img {
+            transform: scale(1.05);
         }
 
         .book-title {
@@ -702,7 +686,7 @@
     </section>
 
     <script>
-        // Books Data with GitHub Raw URLs
+        // Books Data with Original Cover Images
         const books = [
             {
                 id: 1,
@@ -712,7 +696,7 @@
                 price: 30,
                 category: "self-help",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Read%20people%20like%20a%20book%20Idiosyncrasy%20edition.pdf",
-                coverClass: ""
+                coverImage: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/book1-cover.jpg"
             },
             {
                 id: 2,
@@ -722,7 +706,7 @@
                 price: 30,
                 category: "spiritual",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Shankar%20Baba%20Mantra%20Collection%20-%2013.pdf",
-                coverClass: "cover-2"
+                coverImage: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/book2-cover.jpg"
             },
             {
                 id: 3,
@@ -732,7 +716,7 @@
                 price: 30,
                 category: "spiritual",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%AE%E0%A5%80%20%E0%A4%B8%E0%A4%AE%E0%A4%B0%E0%A5%8D%E0%A4%A5%20%E0%A4%AE%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%20%E0%A4%B8%E0%A4%82%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%B9%20-%20Inkfluence%20AI.pdf",
-                coverClass: "cover-3"
+                coverImage: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/book3-cover.jpg"
             },
             {
                 id: 4,
@@ -742,7 +726,7 @@
                 price: 30,
                 category: "career",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Modern%20Tech%20Career%20Guide%202026%20-%20.pdf",
-                coverClass: "cover-4"
+                coverImage: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/book4-cover.jpg"
             },
             {
                 id: 5,
@@ -752,7 +736,7 @@
                 price: 30,
                 category: "career",
                 pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Australia%20Migration%20Complete%20Guide%202026%20.pdf",
-                coverClass: "cover-5"
+                coverImage: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/book5-cover.jpg"
             }
         ];
 
@@ -782,8 +766,8 @@
                 const bookCard = document.createElement('div');
                 bookCard.className = 'book-card';
                 bookCard.innerHTML = `
-                    <div class="book-cover ${book.coverClass}">
-                        <span class="book-title-cover">${book.title}</span>
+                    <div class="book-cover">
+                        <img src="${book.coverImage}" alt="${book.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22400%22%3E%3Crect fill=%22%231a1a1a%22 width=%22300%22 height=%22400%22/%3E%3C/svg%3E'">
                     </div>
                     <h3 class="book-title">${book.title}</h3>
                     <p class="book-author">by ${book.author}</p>
