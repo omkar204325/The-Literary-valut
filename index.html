@@ -588,7 +588,7 @@
                 <span>Total:</span>
                 <span id="cartTotal">₹0</span>
             </div>
-            <button class="checkout-btn" onclick="checkout()">Download Now</button>
+            <button class="checkout-btn" onclick="checkout()">📥 Download Now</button>
         </div>
     </div>
 
@@ -638,7 +638,7 @@
     </section>
 
     <script>
-        // Books Data - Updated with correct PDF paths
+        // Books Data - CORRECTED PATHS WITH CAPITAL "Pdfs"
         const books = [
             {
                 id: 1,
@@ -647,7 +647,7 @@
                 author: "Self-Help Expert",
                 price: 30,
                 category: "self-help",
-                pdfFile: "pdfs/Read people like a book Idiosyncrasy edition.pdf"
+                pdfFile: "Pdfs/Read people like a book Idiosyncrasy edition.pdf"
             },
             {
                 id: 2,
@@ -656,7 +656,7 @@
                 author: "Spiritual Guide",
                 price: 30,
                 category: "spiritual",
-                pdfFile: "pdfs/Shankar Baba Mantra Collection - 13.pdf"
+                pdfFile: "Pdfs/Shankar Baba Mantra Collection - 13.pdf"
             },
             {
                 id: 3,
@@ -665,7 +665,7 @@
                 author: "Inkfluence AI",
                 price: 30,
                 category: "spiritual",
-                pdfFile: "pdfs/श्री स्वामी समर्थ मंत्र संग्रह - Inkfluence AI.pdf"
+                pdfFile: "Pdfs/श्री स्वामी समर्थ मंत्र संग्रह - Inkfluence AI.pdf"
             },
             {
                 id: 4,
@@ -674,7 +674,7 @@
                 author: "Tech Experts",
                 price: 30,
                 category: "career",
-                pdfFile: "pdfs/Modern Tech Career Guide 2026 - .pdf"
+                pdfFile: "Pdfs/Modern Tech Career Guide 2026 - .pdf"
             },
             {
                 id: 5,
@@ -683,7 +683,7 @@
                 author: "Migration Expert",
                 price: 30,
                 category: "career",
-                pdfFile: "pdfs/Australia Migration Complete Guide 2026 .pdf"
+                pdfFile: "Pdfs/Australia Migration Complete Guide 2026 .pdf"
             }
         ];
 
@@ -831,18 +831,21 @@
                 discount = baseTotal - finalTotal;
             }
 
-            // Generate download links for each PDF
-            cart.forEach(item => {
-                const link = document.createElement('a');
-                link.href = item.pdfFile;
-                link.download = item.pdfFile.split('/').pop();
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            // Download each PDF
+            cart.forEach((item, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = item.pdfFile;
+                    link.download = item.pdfFile.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, index * 500); // Stagger downloads
             });
 
-            const summary = `📚 Order Summary:\n\nBooks: ${totalBooks}\nOriginal Price: ₹${baseTotal}\nDiscount: -₹${discount}\nFinal Total: ₹${finalTotal}\n\n✅ Your PDFs are downloading...`;
-            alert(summary);
+            const summary = `📚 Order Confirmed!\n\nBooks: ${totalBooks}\nOriginal Price: ₹${baseTotal}\nDiscount: -₹${discount}\nFinal Total: ₹${finalTotal}\n\n✅ Your PDFs are downloading...\n\nThank you for your purchase!`;
+            
+            setTimeout(() => alert(summary), 500);
             
             cart = [];
             updateCart();
