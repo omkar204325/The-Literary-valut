@@ -325,15 +325,23 @@
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-cover:hover {
+            background: linear-gradient(135deg, #D4AF37, #E8C547);
         }
 
         .book-cover .book-title-cover {
             font-family: 'Playfair Display', serif;
-            font-size: 13px;
-            color: var(--white-dim);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             line-height: 1.4;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .book-title {
@@ -355,6 +363,10 @@
             color: var(--white-dim);
             margin-bottom: 15px;
             opacity: 0.7;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
         }
 
         .book-price {
@@ -362,6 +374,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
+            gap: 10px;
         }
 
         .price {
@@ -372,19 +385,21 @@
 
         .add-cart {
             padding: 10px 16px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+            background: var(--gold);
+            border: none;
+            color: #000;
             font-size: 11px;
             cursor: pointer;
             transition: all 0.3s;
             letter-spacing: 1px;
-            font-weight: 500;
+            font-weight: 600;
+            border-radius: 4px;
+            flex: 1;
         }
 
         .add-cart:hover {
-            background: var(--gold);
-            color: #000;
+            background: var(--gold-light);
+            transform: scale(1.05);
         }
 
         /* Cart Modal */
@@ -401,6 +416,7 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(212, 175, 55, 0.2);
         }
 
         .cart-modal.open {
@@ -478,24 +494,29 @@
             font-weight: 600;
             color: var(--gold);
             margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
         }
 
         .checkout-btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: var(--gold);
             border: none;
             color: #000;
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
+            border-radius: 4px;
         }
 
         .checkout-btn:hover {
             background: var(--gold-light);
+            transform: scale(1.02);
         }
 
         .empty-cart {
@@ -569,7 +590,7 @@
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-header">
-            <h3>Your Cart</h3>
+            <h3>📚 Your Cart</h3>
             <button class="cart-close" onclick="toggleCart()">✕</button>
         </div>
         <div class="cart-items" id="cartItems">
@@ -577,18 +598,18 @@
         </div>
         <div class="cart-footer">
             <div class="cart-summary">
-                <span>Books:</span>
+                <span>📖 Books:</span>
                 <span id="bookCount">0</span>
             </div>
             <div class="cart-summary">
-                <span>Discount:</span>
+                <span>🎉 Discount:</span>
                 <span id="discountAmount" style="color: var(--gold);">₹0</span>
             </div>
             <div class="cart-total">
-                <span>Total:</span>
+                <span>💰 Total:</span>
                 <span id="cartTotal">₹0</span>
             </div>
-            <button class="checkout-btn" onclick="checkout()">📥 Download Now</button>
+            <button class="checkout-btn" onclick="checkout()">📥 Download All PDFs</button>
         </div>
     </div>
 
@@ -603,15 +624,15 @@
         
         <div class="floating-elements">
             <div class="glass-card glass-1">
-                <h4>Spiritual</h4>
+                <h4>📖 Spiritual</h4>
                 <p>Sacred wisdom & mantras</p>
             </div>
             <div class="glass-card glass-2">
-                <h4>Self-Help</h4>
+                <h4>💼 Self-Help</h4>
                 <p>Personal growth guides</p>
             </div>
             <div class="glass-card glass-3">
-                <h4>Career</h4>
+                <h4>💻 Career</h4>
                 <p>Professional development</p>
             </div>
         </div>
@@ -638,7 +659,7 @@
     </section>
 
     <script>
-        // Books Data - CORRECTED PATHS WITH CAPITAL "Pdfs"
+        // Books Data with GitHub Raw URLs for direct PDF access
         const books = [
             {
                 id: 1,
@@ -647,7 +668,8 @@
                 author: "Self-Help Expert",
                 price: 30,
                 category: "self-help",
-                pdfFile: "Pdfs/Read people like a book Idiosyncrasy edition.pdf"
+                pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Read%20people%20like%20a%20book%20Idiosyncrasy%20edition.pdf",
+                color: "#FF6B6B"
             },
             {
                 id: 2,
@@ -656,7 +678,8 @@
                 author: "Spiritual Guide",
                 price: 30,
                 category: "spiritual",
-                pdfFile: "Pdfs/Shankar Baba Mantra Collection - 13.pdf"
+                pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Shankar%20Baba%20Mantra%20Collection%20-%2013.pdf",
+                color: "#4ECDC4"
             },
             {
                 id: 3,
@@ -665,7 +688,8 @@
                 author: "Inkfluence AI",
                 price: 30,
                 category: "spiritual",
-                pdfFile: "Pdfs/श्री स्वामी समर्थ मंत्र संग्रह - Inkfluence AI.pdf"
+                pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%AE%E0%A5%80%20%E0%A4%B8%E0%A4%AE%E0%A4%B0%E0%A5%8D%E0%A4%A5%20%E0%A4%AE%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%20%E0%A4%B8%E0%A4%82%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%B9%20-%20Inkfluence%20AI.pdf",
+                color: "#FFD93D"
             },
             {
                 id: 4,
@@ -674,7 +698,8 @@
                 author: "Tech Experts",
                 price: 30,
                 category: "career",
-                pdfFile: "Pdfs/Modern Tech Career Guide 2026 - .pdf"
+                pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Modern%20Tech%20Career%20Guide%202026%20-%20.pdf",
+                color: "#6BCB77"
             },
             {
                 id: 5,
@@ -683,7 +708,8 @@
                 author: "Migration Expert",
                 price: 30,
                 category: "career",
-                pdfFile: "Pdfs/Australia Migration Complete Guide 2026 .pdf"
+                pdfFile: "https://raw.githubusercontent.com/omkar204325/The-Literary-valut/main/Pdfs/Australia%20Migration%20Complete%20Guide%202026%20.pdf",
+                color: "#A8D8EA"
             }
         ];
 
@@ -713,8 +739,8 @@
                 const bookCard = document.createElement('div');
                 bookCard.className = 'book-card';
                 bookCard.innerHTML = `
-                    <div class="book-cover">
-                        <span class="book-title-cover">${book.title}<br>${book.subtitle}</span>
+                    <div class="book-cover" style="background: linear-gradient(135deg, ${book.color}40, ${book.color}20);" onclick="downloadBook('${book.pdfFile}', '${book.title}')">
+                        <span class="book-title-cover">${book.title}<br><small style="font-size: 12px; opacity: 0.9;">${book.subtitle}</small></span>
                     </div>
                     <h3 class="book-title">${book.title}</h3>
                     <p class="book-author">by ${book.author}</p>
@@ -735,6 +761,17 @@
             renderBooks(category);
         }
 
+        // Download individual book
+        function downloadBook(pdfUrl, title) {
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = title + '.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showNotification(`📥 ${title} downloading...`);
+        }
+
         // Add to cart
         function addToCart(bookId) {
             const book = books.find(b => b.id === bookId);
@@ -747,7 +784,7 @@
             }
 
             updateCart();
-            showNotification('Added to cart!');
+            showNotification('✅ Added to cart!');
         }
 
         // Remove from cart
@@ -831,19 +868,14 @@
                 discount = baseTotal - finalTotal;
             }
 
-            // Download each PDF
+            // Download each PDF with delay
             cart.forEach((item, index) => {
                 setTimeout(() => {
-                    const link = document.createElement('a');
-                    link.href = item.pdfFile;
-                    link.download = item.pdfFile.split('/').pop();
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }, index * 500); // Stagger downloads
+                    downloadBook(item.pdfFile, item.title);
+                }, index * 800);
             });
 
-            const summary = `📚 Order Confirmed!\n\nBooks: ${totalBooks}\nOriginal Price: ₹${baseTotal}\nDiscount: -₹${discount}\nFinal Total: ₹${finalTotal}\n\n✅ Your PDFs are downloading...\n\nThank you for your purchase!`;
+            const summary = `📚 ORDER CONFIRMED!\n\n📖 Books: ${totalBooks}\n💵 Original Price: ₹${baseTotal}\n🎉 Discount: -₹${discount}\n💰 Final Total: ₹${finalTotal}\n\n✅ Your PDFs are downloading...\n\nThank you for your purchase! 🙏`;
             
             setTimeout(() => alert(summary), 500);
             
@@ -867,9 +899,10 @@
                 font-weight: 600;
                 z-index: 2000;
                 animation: slideIn 0.3s ease;
+                box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
             `;
             document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 2000);
+            setTimeout(() => notification.remove(), 2500);
         }
 
         // Enter site
